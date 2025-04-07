@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://l3hpxvdt7glj"]
+
+[ext_resource type="Script" path="res://Scenes/googly_eyes.gd" id="1_1ap65"]
+[ext_resource type="Texture2D" uid="uid://dj4lxdmt3dl8h" path="res://sprites/eye1.png" id="1_dikq8"]
+
+[sub_resource type="Gradient" id="Gradient_w8lcw"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.114362, 0.239362)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rj7g0"]
+gradient = SubResource("Gradient_w8lcw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="GooglyEyes" type="Node2D"]
+script = ExtResource("1_1ap65")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-66, -3)
+scale = Vector2(0.277, 0.277)
+texture = ExtResource("1_dikq8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(46, -3)
+scale = Vector2(0.277, 0.277)
+texture = ExtResource("1_dikq8")
+
+[node name="eyeball2" type="Sprite2D" parent="."]
+position = Vector2(-65, -3)
+scale = Vector2(2.03125, 2.03125)
+texture = SubResource("GradientTexture2D_rj7g0")
+
+[node name="eyeball3" type="Sprite2D" parent="."]
+position = Vector2(47, 0)
+scale = Vector2(2.03125, 2.03125)
+texture = SubResource("GradientTexture2D_rj7g0")

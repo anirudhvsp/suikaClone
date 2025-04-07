@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b65qh0c5gghko"]
+
+[ext_resource type="Script" path="res://scripts/juice_splash.gd" id="1_6xycm"]
+
+[sub_resource type="Gradient" id="Gradient_06tqc"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1jmh6"]
+gradient = SubResource("Gradient_06tqc")
+width = 8
+height = 8
+use_hdr = true
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 10
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.54
+randomness = 0.12
+texture = SubResource("GradientTexture2D_1jmh6")
+spread = 180.0
+gravity = Vector2(0, 490)
+initial_velocity_min = 111.29
+initial_velocity_max = 167.64
+angular_velocity_min = -452.57
+angular_velocity_max = 473.14
+script = ExtResource("1_6xycm")

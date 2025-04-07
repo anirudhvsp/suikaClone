@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5by80eclhwol"]
+
+[ext_resource type="Script" path="res://addons/awesome_splash/core/SplashContainer.gd" id="1_k17f7"]
+[ext_resource type="PackedScene" uid="uid://by0kg6hvqyi20" path="res://Scenes/game.tscn" id="2_hwhjv"]
+[ext_resource type="PackedScene" uid="uid://deek6xkn5e5p2" path="res://src/demo_collection/aqua/splash_screen.tscn" id="3_rd1a4"]
+
+[node name="SplashContainer" type="Node2D"]
+script = ExtResource("1_k17f7")
+move_to_scene = ExtResource("2_hwhjv")
+
+[node name="SplashAqua" parent="." instance=ExtResource("3_rd1a4")]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://do4jh6bn7d0ev"]
+
+[ext_resource type="Script" path="res://Scenes/mouth.gd" id="1_h3vwv"]
+[ext_resource type="Texture2D" uid="uid://dhnf4nuo3etdl" path="res://sprites/mouthFlat.png" id="1_s7n2n"]
+[ext_resource type="Texture2D" uid="uid://ch2i7jp2rehlc" path="res://sprites/mouthSmile.png" id="2_xk0id"]
+[ext_resource type="Texture2D" uid="uid://0te50nrhiql5" path="res://sprites/mouthSmile2.png" id="4_efxqu"]
+[ext_resource type="Texture2D" uid="uid://jdre8rd4yyii" path="res://sprites/mouthFrown.png" id="5_ae268"]
+
+[node name="mouth" type="Node2D"]
+script = ExtResource("1_h3vwv")
+
+[node name="flat" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_s7n2n")
+
+[node name="smile" type="Sprite2D" parent="."]
+position = Vector2(0, -86)
+texture = ExtResource("2_xk0id")
+
+[node name="smitle2" type="Sprite2D" parent="."]
+position = Vector2(0, -86)
+texture = ExtResource("4_efxqu")
+
+[node name="frown" type="Sprite2D" parent="."]
+position = Vector2(0, -46)
+texture = ExtResource("5_ae268")

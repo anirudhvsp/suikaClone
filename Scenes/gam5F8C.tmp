@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://by0kg6hvqyi20"]
+
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_0h4qk"]
+[ext_resource type="PackedScene" uid="uid://c5hgei2s1jtpc" path="res://Scenes/player.tscn" id="1_3u6fm"]
+[ext_resource type="PackedScene" uid="uid://bff2pbhk6nr0m" path="res://Scenes/bucket.tscn" id="1_qkh2j"]
+[ext_resource type="Texture2D" uid="uid://ct2gmp6l4edmw" path="res://sprites/backg.png" id="3_n023e"]
+[ext_resource type="AudioStream" uid="uid://c81mowq88adrt" path="res://sounds/Sketchbook 2024-12-18.ogg" id="4_nyttx"]
+
+[node name="game" type="Node2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_0h4qk")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(347, 596)
+scale = Vector2(6.53392, 14.1035)
+texture = ExtResource("3_n023e")
+
+[node name="player" parent="." instance=ExtResource("1_3u6fm")]
+z_index = 1
+position = Vector2(115, 107)
+
+[node name="bucket" parent="." instance=ExtResource("1_qkh2j")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(347, 596)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_nyttx")
+autoplay = true
+parameters/looping = true

@@ -1,71 +1,73 @@
-[gd_scene load_steps=15 format=3 uid="uid://cppkfkqo0qa54"]
+[gd_scene load_steps=17 format=3 uid="uid://cppkfkqo0qa54"]
 
 [ext_resource type="Script" path="res://sprites/fruit.gd" id="1_dbdss"]
-[ext_resource type="Texture2D" uid="uid://c317uswfey2pk" path="res://sprites/fruits2.png" id="1_uyq55"]
-[ext_resource type="PackedScene" uid="uid://erlhyrynovso" path="res://Scenes/puff.tscn" id="2_byq2m"]
-[ext_resource type="Texture2D" uid="uid://dgh8n6tlvlmyx" path="res://sprites/fruits.png" id="3_nny6y"]
+[ext_resource type="PackedScene" uid="uid://b65qh0c5gghko" path="res://Scenes/juiceSplash.tscn" id="2_ps2lv"]
+[ext_resource type="Texture2D" uid="uid://cf15s5m5s0ypn" path="res://sprites/fruit2.png" id="3_7ky2c"]
+[ext_resource type="PackedScene" uid="uid://l3hpxvdt7glj" path="res://Scenes/googly_eyes.tscn" id="5_1efq5"]
+[ext_resource type="AudioStream" uid="uid://nrjk3gvm4gs7" path="res://sounds/Bubble 1.wav" id="5_002cy"]
+[ext_resource type="PackedScene" uid="uid://do4jh6bn7d0ev" path="res://Scenes/mouth.tscn" id="6_xyoia"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_66okk"]
-atlas = ExtResource("3_nny6y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sx42b"]
+atlas = ExtResource("3_7ky2c")
 region = Rect2(0, 0, 384, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wf4oe"]
-atlas = ExtResource("3_nny6y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkgei"]
+atlas = ExtResource("3_7ky2c")
 region = Rect2(384, 0, 384, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y28pe"]
-atlas = ExtResource("3_nny6y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_137qh"]
+atlas = ExtResource("3_7ky2c")
 region = Rect2(768, 0, 384, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hthq"]
-atlas = ExtResource("3_nny6y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tflye"]
+atlas = ExtResource("3_7ky2c")
 region = Rect2(1152, 0, 384, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4rg8b"]
-atlas = ExtResource("3_nny6y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q57cg"]
+atlas = ExtResource("3_7ky2c")
 region = Rect2(1536, 0, 384, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hmti0"]
-atlas = ExtResource("3_nny6y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nc5k"]
+atlas = ExtResource("3_7ky2c")
 region = Rect2(1920, 0, 384, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vpytf"]
-atlas = ExtResource("3_nny6y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_axgpm"]
+atlas = ExtResource("3_7ky2c")
 region = Rect2(2304, 0, 384, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pa8jq"]
-atlas = ExtResource("3_nny6y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqrff"]
+atlas = ExtResource("3_7ky2c")
 region = Rect2(2688, 0, 384, 384)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3ve11"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_66okk")
+"texture": SubResource("AtlasTexture_sx42b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wf4oe")
+"texture": SubResource("AtlasTexture_gkgei")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y28pe")
+"texture": SubResource("AtlasTexture_137qh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5hthq")
+"texture": SubResource("AtlasTexture_tflye")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4rg8b")
+"texture": SubResource("AtlasTexture_q57cg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hmti0")
+"texture": SubResource("AtlasTexture_0nc5k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vpytf")
+"texture": SubResource("AtlasTexture_axgpm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pa8jq")
+"texture": SubResource("AtlasTexture_nqrff")
 }],
 "loop": true,
-"name": &"default",
+"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -74,17 +76,22 @@ radius = 40.0
 
 [node name="fruit" type="RigidBody2D"]
 script = ExtResource("1_dbdss")
-poof_scene = ExtResource("2_byq2m")
-
-[node name="Fruits2" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.245, 0.245)
-texture = ExtResource("1_uyq55")
-region_enabled = true
-region_rect = Rect2(457, 37, 231, 359)
+poof_scene = ExtResource("2_ps2lv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3ve11")
+animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gj7bm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_002cy")
+
+[node name="GooglyEyes" parent="." instance=ExtResource("5_1efq5")]
+position = Vector2(0, -8)
+scale = Vector2(0.42, 0.42)
+
+[node name="mouth" parent="GooglyEyes" instance=ExtResource("6_xyoia")]
+position = Vector2(-7.14286, 80.9524)
+scale = Vector2(0.385, 0.385)
