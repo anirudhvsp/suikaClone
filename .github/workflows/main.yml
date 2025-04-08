@@ -94,8 +94,10 @@ jobs:
           butler -V
 
       - name: Authenticate Butler
+        env :
+          BUTLER_API_KEY: ${{ secrets.ITCH_IO_API }}
         run: |
-          echo "${{ secrets.ITCH_IO_API }}" | butler login
+          butler login
 
       - name: Push APK to Itch.io
         run: |
