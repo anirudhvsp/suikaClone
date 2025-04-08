@@ -19,7 +19,24 @@ jobs:
       
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
-      
+
+      # Decode the keystore file from base64 and create the keystore file.
+      - name: Decode Android keystore
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 --decode > android.keystore
+        shell: bash
+
+      # Create custom editor settings including the keystore info.
+      - name: Create custom editor settings for Android signing
+        run: |
+          mkdir -p ~/.config/godot
+          echo '[android]' > ~/.config/godot/editor_settings-4.tres
+          echo 'keystore_path = "android.keystore"' >> ~/.config/godot/editor_settings-4.tres
+          echo 'keystore_password = "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}"' >> ~/.config/godot/editor_settings-4.tres
+          echo 'key_alias = "${{ secrets.ANDROID_KEY_ALIAS }}"' >> ~/.config/godot/editor_settings-4.tres
+          echo 'key_password = "${{ secrets.ANDROID_KEY_PASSWORD }}"' >> ~/.config/godot/editor_settings-4.tres
+        shell: bash
+
       - name: export game
         id: export
         # Use latest version (see releases for all versions)
