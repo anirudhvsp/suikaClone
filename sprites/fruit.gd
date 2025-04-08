@@ -120,6 +120,9 @@ func _finish_merge(other: Fruit) -> void:
 	if audio_stream_player_2d and not audio_stream_player_2d.playing:
 		audio_stream_player_2d.play()
 
+	var fruit_value = int(pow(2, animated_sprite_2d.frame))
+	ScoreManager.add_score(fruit_value)
+	
 	Input.vibrate_handheld(500)
 	freeze = false
 	merging = false

@@ -22,6 +22,7 @@ config/icon="res://sprites/icons/mipmap-hdpi/iconMobile.png"
 
 sp="*res://addons/awesome_splash/utils_splash.gd"
 gd="*res://addons/godot-action/utils_gd_action.tscn"
+ScoreManager="*res://scripts/ScoreManager.gd"
 
 [display]
 

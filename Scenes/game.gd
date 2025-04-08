@@ -102,9 +102,11 @@ func _physics_process(delta: float) -> void:
 				game_over.visible=true
 				background_2.visible=true
 				game_over_line.visible = true  # Optional visual signal
-				get_tree().paused = true
+				#get_tree().paused = true
 				await get_tree().create_timer(3).timeout
-				get_tree().reload_scene() 
+				get_tree().reload_current_scene()
+				ScoreManager.reset_score()
+				
 				
 				# You can add more game-over handling logic here
 		else:
