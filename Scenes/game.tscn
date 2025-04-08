@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://by0kg6hvqyi20"]
+[gd_scene load_steps=13 format=3 uid="uid://by0kg6hvqyi20"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_0h4qk"]
 [ext_resource type="PackedScene" uid="uid://c5hgei2s1jtpc" path="res://Scenes/player.tscn" id="1_3u6fm"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://ct2gmp6l4edmw" path="res://sprites/backg.png" id="3_n023e"]
 [ext_resource type="AudioStream" uid="uid://c81mowq88adrt" path="res://sounds/Sketchbook 2024-12-18.ogg" id="4_nyttx"]
 [ext_resource type="PackedScene" uid="uid://cxpfasg5bcwv8" path="res://Scenes/gameOverPopup.tscn" id="6_nl1u2"]
+[ext_resource type="FontFile" uid="uid://dgqjme3hpafpc" path="res://sprites/Kaph-Regular.ttf" id="7_bye8j"]
+[ext_resource type="Script" path="res://Scenes/user_interface.gd" id="7_tdmsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cxfwp"]
 size = Vector2(685, 192)
@@ -16,6 +18,11 @@ colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4rltw"]
 gradient = SubResource("Gradient_j2lij")
 width = 671
+
+[sub_resource type="LabelSettings" id="LabelSettings_jce4i"]
+font = ExtResource("7_bye8j")
+font_size = 40
+font_color = Color(0.846377, 0.5563, 0.871583, 1)
 
 [node name="game" type="Node2D"]
 position = Vector2(1, 0)
@@ -67,3 +74,19 @@ z_index = 2
 position = Vector2(347, 596)
 scale = Vector2(6.53392, 14.1035)
 texture = ExtResource("3_n023e")
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 665.0
+offset_bottom = 1305.0
+script = ExtResource("7_tdmsp")
+
+[node name="Score" type="Label" parent="UserInterface"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 1138.0
+offset_right = 358.0
+offset_bottom = 1185.0
+text = "Score : 0 "
+label_settings = SubResource("LabelSettings_jce4i")
