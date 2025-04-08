@@ -1,11 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://cppkfkqo0qa54"]
+[gd_scene load_steps=26 format=3 uid="uid://cppkfkqo0qa54"]
 
 [ext_resource type="Script" path="res://sprites/fruit.gd" id="1_dbdss"]
 [ext_resource type="PackedScene" uid="uid://b65qh0c5gghko" path="res://Scenes/juiceSplash.tscn" id="2_ps2lv"]
 [ext_resource type="Texture2D" uid="uid://cf15s5m5s0ypn" path="res://sprites/fruit2.png" id="3_7ky2c"]
-[ext_resource type="PackedScene" uid="uid://l3hpxvdt7glj" path="res://Scenes/googly_eyes.tscn" id="5_1efq5"]
+[ext_resource type="Texture2D" uid="uid://cwo50lo12yjbp" path="res://sprites/circles.png" id="3_gsbuw"]
 [ext_resource type="AudioStream" uid="uid://nrjk3gvm4gs7" path="res://sounds/Bubble 1.wav" id="5_002cy"]
 [ext_resource type="PackedScene" uid="uid://do4jh6bn7d0ev" path="res://Scenes/mouth.tscn" id="6_xyoia"]
+[ext_resource type="PackedScene" uid="uid://bth2ius3ji1ny" path="res://Scenes/eyes.tscn" id="7_5ertu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sx42b"]
 atlas = ExtResource("3_7ky2c")
@@ -39,6 +40,38 @@ region = Rect2(2304, 0, 384, 384)
 atlas = ExtResource("3_7ky2c")
 region = Rect2(2688, 0, 384, 384)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxamo"]
+atlas = ExtResource("3_gsbuw")
+region = Rect2(0, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk2f7"]
+atlas = ExtResource("3_gsbuw")
+region = Rect2(384, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jftv"]
+atlas = ExtResource("3_gsbuw")
+region = Rect2(768, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lccu8"]
+atlas = ExtResource("3_gsbuw")
+region = Rect2(1152, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtmq1"]
+atlas = ExtResource("3_gsbuw")
+region = Rect2(1536, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjr8r"]
+atlas = ExtResource("3_gsbuw")
+region = Rect2(1920, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22quw"]
+atlas = ExtResource("3_gsbuw")
+region = Rect2(2304, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85m6s"]
+atlas = ExtResource("3_gsbuw")
+region = Rect2(2688, 0, 384, 384)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3ve11"]
 animations = [{
 "frames": [{
@@ -69,6 +102,35 @@ animations = [{
 "loop": true,
 "name": &"new_animation",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxamo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk2f7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jftv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lccu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtmq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjr8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22quw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85m6s")
+}],
+"loop": true,
+"name": &"new_animation)Old2",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gj7bm"]
@@ -88,10 +150,10 @@ shape = SubResource("CircleShape2D_gj7bm")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_002cy")
 
-[node name="GooglyEyes" parent="." instance=ExtResource("5_1efq5")]
-position = Vector2(0, -8)
-scale = Vector2(0.42, 0.42)
+[node name="mouth" parent="." instance=ExtResource("6_xyoia")]
+position = Vector2(-3, 26)
+scale = Vector2(0.1617, 0.1617)
 
-[node name="mouth" parent="GooglyEyes" instance=ExtResource("6_xyoia")]
-position = Vector2(-7.14286, 80.9524)
-scale = Vector2(0.385, 0.385)
+[node name="eyes" parent="." instance=ExtResource("7_5ertu")]
+position = Vector2(3, -1.90735e-06)
+scale = Vector2(0.4, 0.4)

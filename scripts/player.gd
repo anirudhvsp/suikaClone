@@ -5,6 +5,8 @@ extends Node2D
 var dragging := false
 var last_drop_time := 0.0
 const DROP_COOLDOWN := 0.5  # seconds
+var initialScale = Vector2(1.78,2.669)
+
 
 func _ready() -> void:
 	set_process_input(true)
@@ -54,8 +56,8 @@ func drop_fruit() -> void:
 			fruit.angular_velocity = random_spin
 
 		var tween = create_tween()
-		sprite_2d.scale = Vector2.ONE * 0.6
-		tween.tween_property(sprite_2d, "scale", Vector2.ONE * 1.2, 0.1)\
+		sprite_2d.scale = initialScale * 0.6
+		tween.tween_property(sprite_2d, "scale", initialScale * 1.2, 0.1)\
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
-		tween.tween_property(sprite_2d, "scale", Vector2.ONE, 0.1)\
+		tween.tween_property(sprite_2d, "scale", initialScale, 0.1)\
 			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)

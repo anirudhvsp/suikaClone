@@ -1,13 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5hgei2s1jtpc"]
+[gd_scene load_steps=6 format=3 uid="uid://c5hgei2s1jtpc"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_100k4"]
 [ext_resource type="PackedScene" uid="uid://cppkfkqo0qa54" path="res://Scenes/fruit.tscn" id="2_8o7w2"]
-[ext_resource type="Texture2D" uid="uid://5busr1pinl8f" path="res://sprites/cloud2.png" id="3_csgww"]
+[ext_resource type="Texture2D" uid="uid://bjd53mne64qhi" path="res://sprites/cloud1.png" id="3_fypxy"]
+[ext_resource type="PackedScene" uid="uid://bth2ius3ji1ny" path="res://Scenes/eyes.tscn" id="4_mbej8"]
+[ext_resource type="PackedScene" uid="uid://do4jh6bn7d0ev" path="res://Scenes/mouth.tscn" id="5_c0dvt"]
 
 [node name="player" type="Node2D"]
 script = ExtResource("1_100k4")
 fruit_scene = ExtResource("2_8o7w2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_csgww")
+position = Vector2(4, 2.5)
+scale = Vector2(1.78, 2.68889)
+texture = ExtResource("3_fypxy")
 region_rect = Rect2(0, 0, 160, 117)
+
+[node name="eyes" parent="." instance=ExtResource("4_mbej8")]
+position = Vector2(1, 0)
+scale = Vector2(0.41, 0.41)
+
+[node name="mouth" parent="." instance=ExtResource("5_c0dvt")]
+position = Vector2(-3, 31)
+scale = Vector2(0.23, 0.23)

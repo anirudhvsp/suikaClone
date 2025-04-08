@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://by0kg6hvqyi20"]
+[gd_scene load_steps=10 format=3 uid="uid://by0kg6hvqyi20"]
 
 [ext_resource type="Script" path="res://Scenes/game.gd" id="1_0h4qk"]
 [ext_resource type="PackedScene" uid="uid://c5hgei2s1jtpc" path="res://Scenes/player.tscn" id="1_3u6fm"]
 [ext_resource type="PackedScene" uid="uid://bff2pbhk6nr0m" path="res://Scenes/bucket.tscn" id="1_qkh2j"]
 [ext_resource type="Texture2D" uid="uid://ct2gmp6l4edmw" path="res://sprites/backg.png" id="3_n023e"]
 [ext_resource type="AudioStream" uid="uid://c81mowq88adrt" path="res://sounds/Sketchbook 2024-12-18.ogg" id="4_nyttx"]
+[ext_resource type="PackedScene" uid="uid://cxpfasg5bcwv8" path="res://Scenes/gameOverPopup.tscn" id="6_nl1u2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cxfwp"]
+size = Vector2(685, 192)
+
+[sub_resource type="Gradient" id="Gradient_j2lij"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4rltw"]
+gradient = SubResource("Gradient_j2lij")
+width = 671
 
 [node name="game" type="Node2D"]
 position = Vector2(1, 0)
@@ -30,3 +41,29 @@ position = Vector2(347, 596)
 stream = ExtResource("4_nyttx")
 autoplay = true
 parameters/looping = true
+
+[node name="fillupArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fillupArea"]
+position = Vector2(352, 429)
+shape = SubResource("RectangleShape2D_cxfwp")
+debug_color = Color(0.807915, 0.221164, 0.858059, 0.42)
+
+[node name="line" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(352, 326)
+scale = Vector2(1, 13.25)
+texture = SubResource("GradientTexture1D_4rltw")
+
+[node name="GameOver" parent="." instance=ExtResource("6_nl1u2")]
+visible = false
+z_index = 3
+position = Vector2(338, 453)
+
+[node name="background2" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.643137)
+z_index = 2
+position = Vector2(347, 596)
+scale = Vector2(6.53392, 14.1035)
+texture = ExtResource("3_n023e")
