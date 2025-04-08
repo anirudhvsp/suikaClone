@@ -123,7 +123,9 @@ jobs:
           butler login
 
       - name: Push APK to Itch.io
+        env :
+          BUTLER_API_KEY: ${{ secrets.ITCH_IO_API }}
         run: |
-          butler push /home/runner/.local/share/godot/builds/Android/suikaGame.apk youritchusername/suikagame:android
+          butler push /home/runner/.local/share/godot/builds/Android/suikaGame.apk pastamastarasta/suika-game-clone:android
 
 
