@@ -85,3 +85,20 @@ jobs:
           asset_path: /home/runner/.local/share/godot/builds/Android/suikaGame.apk
           asset_name: suikaGame-Android-v${{ github.run_number }}.apk
           asset_content_type: application/apk
+
+      - name: Install Butler
+        run: |
+          wget -O butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive.zip
+          unzip butler.zip -d butler
+          sudo mv butler/butler /usr/local/bin
+          butler -V
+
+      - name: Authenticate Butler
+        run: |
+          echo "${{ secrets.ITCH_IO_API }}" | butler login
+
+      - name: Push APK to Itch.io
+        run: |
+          butler push /home/runner/.local/share/godot/builds/Android/suikaGame.apk youritchusername/suikagame:android
+
+
