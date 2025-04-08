@@ -9,10 +9,16 @@ jobs:
   export:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Godot Headless Build
-        uses: robpc/godot-export-action@v4.3-0
+      - uses: actions/checkout@v4
+      
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
         with:
-          preset: Android
-          export_path: build/mygame.apk
+          java-version: '17'
+          distribution: 'temurin'
+      
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+      
+      - name: Build SampleApplication
+        run: ./gradlew --no-daemon build
