@@ -50,5 +50,5 @@ jobs:
           godot_export_templates_download_url: https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           relative_project_path: ./
           archive_output: true
-          presets_to_export : android
+          presets_to_export : Android
           cache : true
