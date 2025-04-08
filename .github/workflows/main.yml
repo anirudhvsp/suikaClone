@@ -23,15 +23,19 @@ jobs:
 
       - name: Decode Android keystore
         run: |
-          mkdir -p $HOME/android
-          echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 --decode > $HOME/android/android.keystore
+          # Create the directory structure Godot expects
+          mkdir -p ~/.android
+          # Save the keystore directly to the standard Android location
+          echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 --decode > ~/.android/debug.keystore
+          # Verify keystore is created
+          ls -la ~/.android/
         shell: bash
       
       - name: Create custom editor settings for Android signing
         run: |
           mkdir -p ~/.config/godot
           echo '[android]' > ~/.config/godot/editor_settings-4.tres
-          echo 'keystore_path = "'$HOME/android/android.keystore'"' >> ~/.config/godot/editor_settings-4.tres
+          echo 'keystore_path="$HOME/.android/debug.keystore"' >> ~/.config/godot/editor_settings-4.tres
           echo 'keystore_password = "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}"' >> ~/.config/godot/editor_settings-4.tres
           echo 'key_alias = "${{ secrets.ANDROID_KEY_ALIAS }}"' >> ~/.config/godot/editor_settings-4.tres
           echo 'key_password = "${{ secrets.ANDROID_KEY_PASSWORD }}"' >> ~/.config/godot/editor_settings-4.tres
@@ -49,3 +53,5 @@ jobs:
           godot_export_templates_download_url: https://github.com/godotengine/godot-builds/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
           relative_project_path: ./
           archive_output: true
+          presets_to_export : android
+          cache : true
