@@ -5,7 +5,7 @@ extends Node2D
 var dragging := false
 var last_drop_time := 0.0
 const DROP_COOLDOWN := 0.5  # seconds
-var initialScale = Vector2(1.78,2.669)
+var initialScale = Vector2(0.3,0.3)
 
 
 func _ready() -> void:
