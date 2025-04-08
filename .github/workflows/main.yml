@@ -17,7 +17,30 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      
+      - name: Cache Android SDK
+        uses: actions/cache@v4.2.3
+        with:
+          path: ~/.android
+          key: android-sdk-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/build.gradle') }}
+          restore-keys: |
+            android-sdk-${{ runner.os }}-
+
+      - name: Cache Godot Editor
+        uses: actions/cache@v4.2.3
+        with:
+          path: ~/.local/share/godot/editor
+          key: godot-editor-${{ runner.os }}-v4.3
+          restore-keys: |
+            godot-editor-${{ runner.os }}-
+
+      - name: Cache Godot Export Templates
+        uses: actions/cache@v4.2.3
+        with:
+          path: ~/.local/share/godot/templates
+          key: godot-templates-${{ runner.os }}-v4.3
+          restore-keys: |
+            godot-templates-${{ runner.os }}-
+
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
