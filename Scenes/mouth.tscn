@@ -14,13 +14,18 @@ visible = false
 texture = ExtResource("1_s7n2n")
 
 [node name="smile" type="Sprite2D" parent="."]
-position = Vector2(0, -86)
+position = Vector2(0, -45)
+scale = Vector2(1.335, 0.665)
 texture = ExtResource("2_xk0id")
 
 [node name="smitle2" type="Sprite2D" parent="."]
-position = Vector2(0, -86)
+visible = false
+position = Vector2(-7.62939e-06, -39)
+scale = Vector2(0.3925, 0.3925)
 texture = ExtResource("4_efxqu")
 
 [node name="frown" type="Sprite2D" parent="."]
-position = Vector2(0, -46)
+visible = false
+position = Vector2(20, -51)
+scale = Vector2(0.725, 0.725)
 texture = ExtResource("5_ae268")
