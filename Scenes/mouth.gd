@@ -1,10 +1,19 @@
 extends Node2D
+#@onready var sprite_2d: Sprite2D = $Sprite2D
+
+#@onready var sprite_list: Array[Sprite2D] = [
+	#$flat,
+	#$smile,
+	#$smitle2,
+	#$frown
+#]
 
 @onready var sprite_list: Array[Sprite2D] = [
-	$flat,
-	$smile,
-	$smitle2,
-	$frown
+	$Sprite2D,
+	$Sprite2D2,
+	$Sprite2D3,
+	$Sprite2D4,
+	$Sprite2D5
 ]
 
 var time_accumulator: float = 0.0
