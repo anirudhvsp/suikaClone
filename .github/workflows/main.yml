@@ -23,19 +23,27 @@ jobs:
 
       - name: Decode Android keystore
         run: |
-          # Create the directory structure Godot expects
-          mkdir -p ~/.android
-          # Save the keystore directly to the standard Android location
-          echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 --decode > ~/.android/debug.keystore
+          # Create directory for keystore
+          mkdir -p ${{ github.workspace }}/misc
+          # Save the keystore to the specified path
+          echo "${{ secrets.ANDROID_KEYSTORE }}" | base64 --decode > ${{ github.workspace }}/misc/godot-release.keystore
+          # Set appropriate permissions
+          chmod 600 ${{ github.workspace }}/misc/godot-release.keystore
           # Verify keystore is created
-          ls -la ~/.android/
+          ls -la ${{ github.workspace }}/misc/
         shell: bash
-      
+        
+      - name: Initialize Environment
+        run: |
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_PATH=${{ github.workspace }}/misc/godot-release.keystore" >> $GITHUB_ENV
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_USER=${{ secrets.ANDROID_KEY_ALIAS }}" >> $GITHUB_ENV
+          echo "GODOT_ANDROID_KEYSTORE_RELEASE_PASSWORD=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+        
       - name: Create custom editor settings for Android signing
         run: |
           mkdir -p ~/.config/godot
           echo '[android]' > ~/.config/godot/editor_settings-4.tres
-          echo 'keystore_path="$HOME/.android/debug.keystore"' >> ~/.config/godot/editor_settings-4.tres
+          echo 'keystore_path="$GODOT_ANDROID_KEYSTORE_RELEASE_PATH"' >> ~/.config/godot/editor_settings-4.tres
           echo 'keystore_password = "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}"' >> ~/.config/godot/editor_settings-4.tres
           echo 'key_alias = "${{ secrets.ANDROID_KEY_ALIAS }}"' >> ~/.config/godot/editor_settings-4.tres
           echo 'key_password = "${{ secrets.ANDROID_KEY_PASSWORD }}"' >> ~/.config/godot/editor_settings-4.tres
