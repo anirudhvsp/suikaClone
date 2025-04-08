@@ -8,6 +8,7 @@ on:
 jobs:
   export:
     runs-on: ubuntu-latest
+    environment : AndroidBuild
     steps:
       - uses: actions/checkout@v4
       
