@@ -40,9 +40,6 @@ jobs:
           echo 'key_alias = "${{ secrets.ANDROID_KEY_ALIAS }}"' >> ~/.config/godot/editor_settings-4.tres
           echo 'key_password = "${{ secrets.ANDROID_KEY_PASSWORD }}"' >> ~/.config/godot/editor_settings-4.tres
         shell: bash
-      - name: Set keystore permissions
-        run: chmod 600 $HOME/android/android.keystore
-        shell: bash
       - name: export game
         id: export
         # Use latest version (see releases for all versions)
