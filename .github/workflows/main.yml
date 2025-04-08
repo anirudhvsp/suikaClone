@@ -60,3 +60,24 @@ jobs:
           archive_output: true
           presets_to_export : Android
           cache : true
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release v${{ github.run_number }}
+          draft: false
+          prerelease: false
+          
+      # Upload the APK asset to the release
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ github.workspace }}/.godot/exported/builds/Android.zip
+          asset_name: suikaGame-Android-v${{ github.run_number }}.zip
+          asset_content_type: application/zip
